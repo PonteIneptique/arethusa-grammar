@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Arethusa Grammar Maker</title>
+
+    <!-- Bootstrap Core CSS --><!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootswatch.css')}}">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for("index") }}">Arethusa Grammar Maker</a>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8 text-left">
+               <table id="table" class="table table-bordered table-hover table-condensed">
+<tbody><tr>
+<td>Catégorie Française</td>
+<td>Catégorie Enfant Française (Si besoin)</td>
+<td>Sigle</td>
+<td>Perseids</td>
+</tr>
+<tr>
+<td>Epithète</td>
+<td> </td>
+<td>EPI</td>
+<td>ATR</td>
+</tr>
+<tr>
+<td>Attribut</td>
+<td> </td>
+<td>ATTR</td>
+<td>PNOM</td>
+</tr>
+<tr>
+<td>Prédicat</td>
+<td> </td>
+<td>PRED</td>
+<td>PRED</td>
+</tr>
+<tr>
+<td>Sujet</td>
+<td> </td>
+<td>SUJ</td>
+<td>SUB</td>
+</tr>
+<tr>
+<td>COD</td>
+<td> </td>
+<td>COD</td>
+<td>OBJ</td>
+</tr>
+<tr>
+<td>COI</td>
+<td> </td>
+<td>COI</td>
+<td>OBJ</td>
+</tr>
+<tr>
+<td>COS</td>
+<td> </td>
+<td>COS</td>
+<td>OBJ</td>
+</tr>
+<tr>
+<td>Complément Circon</td>
+<td> </td>
+<td>CC</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de temps</td>
+<td>CCTps</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de manière</td>
+<td>CCMan</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de lieu</td>
+<td>CCLie</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de cause</td>
+<td>CCCse</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de moyen</td>
+<td>CCMoy</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de comparaison</td>
+<td>CCCmp</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de but</td>
+<td>CCBut</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de conséquence</td>
+<td>CCCsq</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de opposition</td>
+<td>CCOpp</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de concession</td>
+<td>CCCcs</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de condition</td>
+<td>CCCnd</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de matière</td>
+<td>CCMat</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de accompagnement</td>
+<td>CCAcc</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de restriction</td>
+<td>CCRes</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td> </td>
+<td>de fréquence</td>
+<td>CCFrq</td>
+<td>ADV</td>
+</tr>
+<tr>
+<td>Attribut du COD</td>
+<td> </td>
+<td>AtrCOD</td>
+<td>OCOMP</td>
+</tr>
+<tr>
+<td>Complément du nom</td>
+<td> </td>
+<td>CdN</td>
+<td>ATR</td>
+</tr>
+<tr>
+<td>Coordonnant</td>
+<td> </td>
+<td>COORD</td>
+<td>COORD</td>
+</tr>
+<tr>
+<td>Complément d&#39;Agent</td>
+<td> </td>
+<td>AGNT</td>
+<td>OBJ</td>
+</tr>
+<tr>
+<td>Auxiliaire</td>
+<td> </td>
+<td>AUX</td>
+<td>AuxV</td>
+</tr>
+<tr>
+<td>Ponctuation</td>
+<td> </td>
+<td>Pnt</td>
+<td>AuxX, AuxG, AuxK</td>
+</tr>
+<tr>
+<td>Préposition</td>
+<td> </td>
+<td>Prep</td>
+<td>AuxP</td>
+</tr>
+<tr>
+<td>Conjonction</td>
+<td> </td>
+<td>Conj</td>
+<td>AuxC</td>
+</tr>
+<tr>
+<td>Apposition</td>
+<td> </td>
+<td>APP</td>
+<td>ATV</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>AuxY</td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>AuxZ</td>
+</tr>
+</tbody></table>
+<pre id="csv">
+Catégorie Française;Catégorie Enfant Française (Si besoin);Sigle;Perseids
+Epithète;;EPI;ATR
+Attribut;;ATTR;PNOM
+Prédicat;;PRED;PRED
+Sujet;;SUJ;SUB
+COD;;COD;OBJ
+COI;;COI;OBJ
+COS;;COS;OBJ
+Complément Circon;;CC;ADV
+;de temps;CCTps;ADV
+;de manière;CCMan;ADV
+;de lieu;CCLie;ADV
+;de cause;CCCse;ADV
+;de moyen;CCMoy;ADV
+;de comparaison;CCCmp;ADV
+;de but;CCBut;ADV
+;de conséquence;CCCsq;ADV
+;de opposition;CCOpp;ADV
+;de concession;CCCcs;ADV
+;de condition;CCCnd;ADV
+;de matière;CCMat;ADV
+;de accompagnement;CCAcc;ADV
+;de restriction;CCRes;ADV
+;de fréquence;CCFrq;ADV
+Attribut du COD;;AtrCOD;OCOMP
+Complément du nom;;CdN;ATR
+Coordonnant;;COORD;COORD
+Complément d'Agent;;AGNT;OBJ
+Auxiliaire;;AUX;AuxV
+Ponctuation;;Pnt;AuxX, AuxG, AuxK
+Préposition;;Prep;AuxP
+Conjonction;;Conj;AuxC
+Apposition;;APP;ATV
+;;;AuxY
+;;;AuxZ
+</pre>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Helper to create Arethusa Config">
+    <meta name="author" content="Thibault Clérice">
+
+    <title>Arethusa Grammar Maker</title>
+
+    <!-- Bootstrap Core CSS --><!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootswatch.css')}}">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for("index") }}">Arethusa Grammar Maker</a>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8 text-center">
+                <h1>Make an Arethusa Grammar config</h1>
+                <p class="text-left">
+                    To provide the necessary information, you will need to create a CSV file. You can create CSV file
+                    by exporting from Spreadsheets [Libre Office Calc, Microsoft Excel, Google Drive, etc.].</p>
+                <p class="text-left">
+                    You can use the <a href="{{ url_for("example1") }}#table">example table</a> to generate your
+                    spreadsheet. We recommend to use the ";" column/field delimiter. The exported CSV would look like
+                    <a href="{{ url_for("example1") }}#csv">the example CSV</a>. Google Drive Sheets uses <code style="display: inline-block;">,</code> by default
+                </p>
+                <hr />
+                <form class="text-left" action="{{ url_for("output") }}" method="POST" enctype="multipart/form-data">
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="config">Name of the grammar (No space, no special characters. eg. treebankFRLyon)</label>
+                        <input name="config" type="text" class="form-control" id="config" placeholder="Name of the Grammar" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lang">Language for the morphology tagging set (accusative, dual, etc.)</label>
+                        <select name="lang" id="lang" class="form-control">
+                            <option value="lat_attributes">Latin</option>
+                            <option value="gr_attributes">Greek</option>
+                            <option value="per_attributes">Persian</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="separator">Separator used in the CSV</label>
+                        <input name="separator" type="text" class="form-control" id="separator" value=";" />
+                    </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="header" checked="checked" value="header" /> The CSV has column headers (Title for
+                            each column is on top row. Column header is optional)
+                        </label>
+                      </div>
+                    <div class="form-group">
+                        <label for="csv_content">CSV File</label>
+                        <input name="csvfile" type="file" accept="text/csv" id="csv_content" placeholder="CSV File" />
+                    </div>
+                    <div class="text-center">
+                        <input class="btn btn-primary" value="Upload !" type="submit"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>
