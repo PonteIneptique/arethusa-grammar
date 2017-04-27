@@ -54,6 +54,7 @@
         <div class="row">
             <div class="col-lg-offset-2 col-lg-8 text-center">
                 <h1>Make an Arethusa Grammar config</h1>
+            <section class="text-left">
                 <p class="text-left">
                     To provide the necessary information, you will need to create a CSV file. You can create CSV file
                     by exporting from Spreadsheets [Libre Office Calc, Microsoft Excel, Google Drive, etc.].</p>
@@ -62,6 +63,17 @@
                     spreadsheet. We recommend to use the ";" column/field delimiter. The exported CSV would look like
                     <a href="{{ url_for("example1") }}#csv">the example CSV</a>. Google Drive Sheets uses <code style="display: inline-block;">,</code> by default
                 </p>
+                <p>The header of your document should be as follow : (<a href="{{ url_for("csv_download") }}">Download CSV template</a>)</p>
+                <table class="table">
+                    <tr class="info">
+                        <td>Category</td>
+                        <td>Child Category</td>
+                        <td>TAG</td>
+                        <td>Perseids original Tag (when possible)</td>
+                        <td>Suffix (If yes, row will be treated as a suffix)</td>
+                    </tr>
+                </table>
+            </section>
                 <hr />
                 <form class="text-left" action="{{ url_for("output") }}" method="POST" enctype="multipart/form-data">
                     {% if error %}
@@ -96,6 +108,14 @@
                     <div class="text-center">
                         <input class="btn btn-primary" value="Upload !" type="submit"/>
                     </div>
+                    <hr />
+                    <p>
+                        This code has been written by Thibault Clérice [@ponteineptique]
+                        <br />
+                        <a href="https://twitter.com/TwitterDev" class="twitter-follow-button" data-show-count="false">Follow @TwitterDev</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <br />
+                        You can find the source on github <a href="https://github.com/PonteIneptique/arethusa-grammar">https://github.com/PonteIneptique/arethusa-grammar</a>
+                    </p>
                 </form>
             </div>
         </div>

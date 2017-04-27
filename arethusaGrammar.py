@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, make_response
 import json
 import time
 import csv
@@ -16,6 +16,14 @@ def index():
 @app.route('/example1')
 def example1():
     return render_template("example1.html")
+
+
+@app.route('/csv')
+def csv_download():
+    memory_file = BytesIO()
+    memory_file.write(b"Category,Child Category,TAG,Perseids original Tag (when possible),Suffix (If value is y the row will be treated as a suffix)\r\n")
+    memory_file.seek(0)
+    return send_file(memory_file, attachment_filename='template-arethusa.csv', as_attachment=True)
 
 
 @app.route('/output', methods=["POST"])
@@ -68,29 +76,36 @@ def output():
             }
             config = {
                 "relations": {
-                    "labels": {
-
-                    }
+                    "labels": {},
+                    "suffixes": {}
                 }
             }
             try:
                 last_row = None
                 for row in rows:
-                    if last_row is not None and len(row[0]) == 0:
+                    if len(row) >= 5 and row[4] == "y":
+                        obj = config["relations"]["suffixes"]
+                        text = row[0]
+                    elif last_row is not None and len(row[0]) == 0:
                         tmp = config["relations"]["labels"][last_row[2]]
                         if "nested" not in tmp:
                             tmp["nested"] = {}
                         obj = tmp["nested"]
+                        text = last_row[0] + " " + row[1]
                     else:
                         last_row = row
                         obj = config["relations"]["labels"]
+                        text = row[0]
 
                     obj[row[2]] = {
                         "short": row[2],
-                        "long": last_row[0] + row[1]
+                        "long": text
                     }
             except IndexError:
-                return render_template("index.html", error="There seems to be an issue with the CSV file you uploaded. Check the formatting")
+                return render_template(
+                    "index.html",
+                    error="There seems to be an issue with the CSV file you uploaded. Check the formatting"
+                )
 
     if len(missings) > 0:
         return render_template("index.html", error=", ".join(missings) + " field(s) are missing or wrong")
