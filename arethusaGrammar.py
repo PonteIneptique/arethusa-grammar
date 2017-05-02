@@ -61,7 +61,6 @@ def output():
             driver = {
               "plugins": {
                 "morph": {
-                  "noRetrieval": "online",
                   "retrievers": {
                     "BspMorphRetriever": {
                       "resource": "morphologyServiceLat"
@@ -80,6 +79,14 @@ def output():
                     "suffixes": {}
                 }
             }
+            if not request.form.get("morph"):
+                driver["plugins"]["morph"]["noRetrieval"]: "online"
+
+            if request.form.get("lang") == "gr_attributes":
+                driver["plugins"]["morph"]["retrievers"]["BspMorphRetriever"]["resource"] = "morphologyServiceGrc"
+            elif request.form.get("lang") == "per_attributes":
+                driver["plugins"]["morph"]["retrievers"]["BspMorphRetriever"]["resource"] = "morphologyServicePer"
+
             try:
                 last_row = None
                 for row in rows:
