@@ -80,7 +80,7 @@ def output():
                 }
             }
             if not request.form.get("morph"):
-                driver["plugins"]["morph"]["noRetrieval"]: "online"
+                driver["plugins"]["morph"]["noRetrieval"] = "online"
 
             if request.form.get("lang") == "gr_attributes":
                 driver["plugins"]["morph"]["retrievers"]["BspMorphRetriever"]["resource"] = "morphologyServiceGrc"
